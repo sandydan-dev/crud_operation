@@ -56,7 +56,7 @@ Uses MongoDB Atlas for storing user credentials and session data.
 Feel free to submit a Pull Request!
 
 ## License
-[LICENSE]
+## LICENSE
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
