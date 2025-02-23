@@ -1,0 +1,85 @@
+<!-- Header -->
+<%- include('./partials/header.ejs')%>
+
+<!-- Form data -->
+
+<div class="container">
+  <div class="row">
+    <!-- create user data -->
+    <div class="col-sm-6 mt-4">
+      <h2 class="alert alert-success text-center">Add New User</h2>
+      <form action="" method="post">
+        <!-- username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+          />
+        </div>
+
+        <!-- email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-control" />
+        </div>
+
+        <!-- mobile -->
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="number" id="mobile" name="mobile" class="form-control" />
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success">Create Account</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- list all data -->
+    <div class="col-sm-6 mt-4">
+      <h2 class="alert alert-success text-center">All User</h2>
+
+      <table class="table table-success table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <!-- list -->
+        <tbody>
+            <% var i = 1%> <% data.forEach((item)=>{ %>
+              <tr>
+                <td><%= i++%></td>
+                <td><%= item.username %></td>
+                <td><%= item.email %></td>
+                <td><%= item.mobile %></td>
+                <td class="grid gap-3">
+                  <form action="/users/edit/<%= item._id%>" method="get" class="d-inline">
+                    <button type="submit" class="border border-0 bg-transparent">
+                      <i class="fas fa-pen-square text-info"></i>
+                    </button>
+                  </form>
+                  <form action="/users/delete/<%= item._id%>" class="d-inline" method="post">
+                    <button type="submit" class="border border-0 bg-transparent">
+                      <i class="fas fa-trash text-danger"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<%- include('./partials/footer.ejs')%>
